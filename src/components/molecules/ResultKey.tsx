@@ -17,8 +17,8 @@ export default function ResultKey({ name, deliveries }: ResultKeysProps) {
   const progress = useMemo(() => {
     if (!deliveries || deliveries.length === 0) return 0;
 
-    const totalValue = deliveries.reduce((sum, delivery) => sum + Number(delivery.value), 0);
-    const progressValue = totalValue / deliveries.length;
+    const totalSum = deliveries.reduce((sum, delivery) => sum + Number(delivery.value), 0);
+    const progressValue = totalSum / deliveries.length;
 
     return progressValue;
   }, [deliveries]);
