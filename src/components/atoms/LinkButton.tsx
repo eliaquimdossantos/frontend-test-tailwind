@@ -12,7 +12,7 @@ export default function LinkButton({ children, disabled = false, className, ...p
       {...props}
       disabled={disabled}
       className={twMerge(
-        'bg-transparent border-none text-cyan-600',
+        'bg-transparent border-none text-cyan-700',
         disabled ? 'hover:no-underline opacity-50' : 'hover:underline',
         className
       )}
