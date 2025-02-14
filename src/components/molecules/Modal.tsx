@@ -2,14 +2,14 @@ import { ReactNode } from 'react';
 import { tv } from 'tailwind-variants';
 
 type ModalProps = {
-  isOpen: boolean;
+  open: boolean;
   onClose: () => void;
   title: string;
   children: ReactNode;
 };
 
 const modalOverlay = tv({
-  base: 'fixed inset-0 flex justify-center items-center bg-black bg-opacity-50 backdrop-blur-sm transition-opacity duration-200',
+  base: 'fixed inset-0 flex justify-center items-center bg-black bg-opacity-50 transition-opacity duration-200',
   variants: {
     open: {
       true: 'opacity-100 visible',
@@ -29,10 +29,10 @@ const modalBox = tv({
 });
 
 
-export default function Modal({ isOpen, onClose, title, children }: ModalProps) {
+export default function Modal({ open, onClose, title, children }: ModalProps) {
   return (
-    <div className={modalOverlay({ open: isOpen })} role="dialog" aria-hidden={!isOpen}>
-      <div className={modalBox({ open: isOpen })}>
+    <div className={modalOverlay({ open: open })} role="dialog" aria-hidden={!open}>
+      <div className={modalBox({ open: open })}>
         <div className="flex items-center justify-between p-4 ">
           <h1 className="text-xl font-semibold text-gray-900">{title}</h1>
           <button onClick={onClose} className="text-gray-400 hover:bg-gray-200 rounded-full transition-colors p-2">
