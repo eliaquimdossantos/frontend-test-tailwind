@@ -1,19 +1,12 @@
-import { useEffect, useState, useMemo } from 'react';
+import { useEffect, useState, useMemo, useCallback } from 'react';
 import Card, { CardDivider, CardBody } from '../molecules/Card';
 import ProgressBar from '../atoms/ProgressBar';
 import Title from '../atoms/Title';
 import AddIcon from '../atoms/AddIcon';
 import ResultKey from '../molecules/ResultKey';
 import LinkButton from '../atoms/LinkButton';
-import { Delivery } from '@/interfaces/Delivery';
-
-interface ResultKeys {
-  createdAt: string;
-  name: string;
-  deliveries: Delivery[];
-  id: string;
-  orkId: string;
-}
+import { ResultKeys } from '@/interfaces/ResultKeys';
+import { getResultKeys } from '@/services/api';
 
 interface CardObjectiveProps {
   name: string;
@@ -23,29 +16,22 @@ interface CardObjectiveProps {
 export default function CardObjective({ name, id }: CardObjectiveProps) {
   const [resultKeys, setResultKeys] = useState<ResultKeys[]>([]);
 
-  useEffect(() => {
+  const fetchResultKeys = useCallback(async () => {
     if (!id) return;
-
-    const fetchResultKeys = async () => {
-      try {
-        const api = process.env.NEXT_PUBLIC_API_URL;
-        const response = await fetch(`${api}/okrs/${id}/resultKeys`);
-        const data = await response.json();
-        setResultKeys(data);
-      } catch (error) {
-        console.error('Erro ao buscar os dados:', error);
-      }
-    };
-
-    fetchResultKeys();
+    const data = await getResultKeys(id);
+    setResultKeys(data);
   }, [id]);
+
+  useEffect(() => {
+    fetchResultKeys();
+  }, [fetchResultKeys]);
 
   const progress = useMemo(() => {
     const totalDeliveries = resultKeys.flatMap((resultKey) => resultKey.deliveries);
     if (totalDeliveries.length === 0) return 0;
 
-    const totalValue = totalDeliveries.reduce((sum, delivery) => sum + Number(delivery.value), 0);
-    const progressValue = totalValue / totalDeliveries.length;
+    const totalSum = totalDeliveries.reduce((sum, delivery) => sum + Number(delivery.value), 0);
+    const progressValue = totalSum / totalDeliveries.length;
 
     return progressValue;
   }, [resultKeys]);
