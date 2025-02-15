@@ -1,12 +1,11 @@
-import { useEffect, useState, useMemo, useCallback } from 'react';
+import { useMemo } from 'react';
 import Card, { CardDivider, CardBody } from '../molecules/Card';
 import ProgressBar from '../atoms/ProgressBar';
 import Title from '../atoms/Title';
 import AddIcon from '../atoms/AddIcon';
-import ResultKey from '../molecules/ResultKey';
+import KeyResultItem from '../molecules/KeyResultItem';
 import LinkButton from '../atoms/LinkButton';
-import { ResultKeys } from '@/interfaces/ResultKeys';
-import { getResultKeys } from '@/services/api';
+import { useKeyResults } from '@/context/OKRContext';
 
 interface CardObjectiveProps {
   name: string;
@@ -14,17 +13,30 @@ interface CardObjectiveProps {
 }
 
 export default function CardObjective({ name, id }: CardObjectiveProps) {
-  const [resultKeys, setResultKeys] = useState<ResultKeys[]>([]);
+  const renderKeyResults = () => {
+    if (resultKeys.length >= 1) {
+      return (<>{
+        resultKeys.map((resultKey) => (
+          <KeyResultItem
+            key={resultKey.id}
+            deliveries={resultKey.deliveries}
+            id={resultKey.id}
+            name={resultKey.name}
+          />
+        ))
+      }</>);
+    } else {
+      return (
+        <div className='text-center mb-2'>
+          <span className='text-sm text-red-600'>
+            Ainda sem resultados-chave
+          </span>
+        </div>
+      );
+    }
+  };
 
-  const fetchResultKeys = useCallback(async () => {
-    if (!id) return;
-    const data = await getResultKeys(id);
-    setResultKeys(data);
-  }, [id]);
-
-  useEffect(() => {
-    fetchResultKeys();
-  }, [fetchResultKeys]);
+  const resultKeys = useKeyResults(id);
 
   const progress = useMemo(() => {
     const totalDeliveries = resultKeys.flatMap((resultKey) => resultKey.deliveries);
@@ -45,14 +57,7 @@ export default function CardObjective({ name, id }: CardObjectiveProps) {
         </CardBody>
         <CardDivider>Resultados-Chave</CardDivider>
         <CardBody>
-          {resultKeys.map((resultKey) => (
-            <ResultKey
-              key={resultKey.id}
-              deliveries={resultKey.deliveries}
-              id={resultKey.id}
-              name={resultKey.name}
-            />
-          ))}
+          {renderKeyResults()}
         </CardBody>
       </Card>
       <div className="flex justify-end">
