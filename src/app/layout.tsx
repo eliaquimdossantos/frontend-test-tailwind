@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import './globals.css';
+import { OKRProvider } from '@/context/OKRContext';
 
 export const metadata: Metadata = {
   title: 'Painel de OKRs',
@@ -13,8 +14,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="pt-BR">
-      <body className='p-5'>        
-        {children}
+      <body className='p-5'>
+        <OKRProvider>
+          {children}
+        </OKRProvider>
       </body>
     </html>
   );

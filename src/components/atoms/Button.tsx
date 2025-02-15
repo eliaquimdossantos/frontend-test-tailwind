@@ -1,5 +1,6 @@
 import { HTMLAttributes, ReactNode } from 'react';
 import { tv } from 'tailwind-variants';
+import clsx from 'clsx';
 
 type ButtonVariant =
   'primary' | 'secondary' | 'danger' | 'light' |
@@ -10,6 +11,8 @@ interface ButtonProps extends HTMLAttributes<HTMLButtonElement> {
   variant?: ButtonVariant;
   outline?: boolean;
   disabled?: boolean;
+  type?: 'button' | 'submit' | 'reset';
+  className?: string;
 }
 
 const button = tv({
@@ -24,10 +27,9 @@ const button = tv({
       'outline-secondary': 'bg-transparent border border-gray-600 text-gray-600 hover:bg-gray-500 hover:text-white',
       'outline-danger': 'bg-transparent border border-red-600 text-red-600 hover:bg-red-500 hover:text-white',
       'outline-light': 'bg-transparent border border-gray-200 text-gray-600 hover:bg-gray-300 hover:text-black',
-
     },
     disabled: {
-      true: 'pointer-envents-none opacity-50',
+      true: 'pointer-events-none opacity-50',
     },
   },
   compoundVariants: [
@@ -77,11 +79,11 @@ const button = tv({
   },
 });
 
-export default function Button({ children, variant, disabled, ...props }: ButtonProps) {
+export default function Button({ children, variant, disabled, className, ...props }: ButtonProps) {
   return (
     <button
       disabled={disabled}
-      className={button({ variant, disabled })}
+      className={clsx(button({ variant, disabled }), className)}
       {...props}
     >
       {children}

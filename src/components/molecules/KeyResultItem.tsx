@@ -4,7 +4,7 @@ import Button from '../atoms/Button';
 import PencilIcon from '../atoms/PencilIcon';
 import DeliveryItem from './DeliveryItem';
 import Title from '../atoms/Title';
-import { Delivery } from '@/interfaces/Delivery';
+import Delivery from '@/interfaces/Delivery';
 
 interface ResultKeysProps {
   id: string;
@@ -12,7 +12,7 @@ interface ResultKeysProps {
   deliveries: Delivery[];
 }
 
-export default function ResultKey({ name, deliveries }: ResultKeysProps) {
+export default function KeyResultItem({ name, deliveries }: ResultKeysProps) {
 
   const progress = useMemo(() => {
     if (!deliveries || deliveries.length === 0) return 0;

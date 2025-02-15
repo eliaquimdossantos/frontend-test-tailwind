@@ -1,9 +1,11 @@
-import { Delivery } from './Delivery';
+import Delivery from './Delivery';
 
-export interface ResultKeys {
+interface KeyResult {
   createdAt: string;
   name: string;
   deliveries: Delivery[];
   id: string;
   orkId: string;
 }
+
+export default KeyResult;
