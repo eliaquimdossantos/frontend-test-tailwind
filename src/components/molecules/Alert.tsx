@@ -1,7 +1,7 @@
-import Notification from '@/interfaces/Notification';
+import Alert from '@/interfaces/Alert';
 import { useEffect, useState } from 'react';
 
-export default function NotificationComponent({ message, variant, ...props }: Omit<Notification, 'id'>) {
+export default function AlertComponent({ message, variant, ...props }: Omit<Alert, 'id'>) {
 
   const [visible, setVisible] = useState(false);
 
