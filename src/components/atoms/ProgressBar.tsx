@@ -11,7 +11,7 @@ function calculateProgress(now: number): number {
 export default function ProgressBar({ now, className, ...props }: ProgressBarProps) {
   return (
     <div
-      className={twMerge('relative flex-1 h-5 rounded-full bg-cyan-200 overflow-hidden', className)}
+      className={twMerge('relative flex-1 h-4 my-2 rounded-full bg-cyan-200 overflow-hidden', className)}
       {...props}
     >
       <div

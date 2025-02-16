@@ -5,10 +5,11 @@ export default function AlertComponent({ message, variant, ...props }: Omit<Aler
 
   const [visible, setVisible] = useState(false);
 
+  // Aguarda o componente ser renderizado para exibir a animação
   useEffect(() => {
     const timer = setTimeout(() => {
       setVisible(true);
-    }, 10); 
+    }, 50); 
 
     return () => clearTimeout(timer);
   }, []);
