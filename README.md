@@ -4,13 +4,13 @@ Este projeto foi desenvolvido como parte do processo seletivo para a posição d
 
 ![Painel](/assets/painel.png)
 
-- As demais imagens demonstrativas se encontram no diretório `assets/`
+- As demais imagens demonstrativas se encontram no diretório [assets/](/assets)
 
 ## Objetivos Atendidos  
 
 - **Implementação do Frontend**: Desenvolvi o frontend do painel de gerenciamento de OKRs utilizando o framework **Next.js**.  
 - **Fidelidade ao Layout**: Segui o layout fornecido, com algumas melhorias de contraste, assegurando consistência tanto na versão desktop quanto mobile.  
-- **Uso de Tecnologias Modernas**: Utilizei **Tailwind CSS** para estilização dos componentes, garantindo um design modular e altamente personalizável, além de bibliotecas open source, como Zod, para manter a qualidade e o padrão do código.  
+- **Uso de Tecnologias Modernas**: Utilizei **Tailwind CSS** para estilização dos componentes, garantindo um design modular e altamente personalizável, além de bibliotecas open source, como ESLint para assegurar a qualidade e a padronização do código, e Zod para um gerenciamento eficiente e seguro de formulários.
 
 ## Como Executar o Projeto  
 
@@ -73,6 +73,8 @@ Para rodar o projeto localmente, siga os passos abaixo:
 # Estrutura de Diretórios
 
 - **`src/app/`**: Componentes de página, como pages de layouts.  
+- **`src/assets/`**: Imagens demonstrativas do funcionamento do projeto.
+- **`src/public/`**: Favicon do site.
 - **`src/components/`**: Componentes da interface de usuário no padrão Atomic Design.  
 - **`src/contexts/`**: Contexts para gerenciamento de estado global.  
 - **`src/hooks/`**: Hooks personalizados.  
