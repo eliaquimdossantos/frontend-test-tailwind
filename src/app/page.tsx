@@ -6,11 +6,9 @@ import Button from '@/components/atoms/Button';
 import PageTitle from '@/components/molecules/PageTitle';
 import MasonryObjectives from '@/components/organisms/MasonryObjectives';
 import Modal from '@/components/molecules/Modal';
-import CreateObjectiveForm from '@/components/pages/home/CreateObjectiveForm';
-import { useOKRs } from '@/context/OKRContext';
+import FormCreateObjective from '@/components/organisms/FormCreateObjective';
 
 export default function Home() {
-  const { okrs } = useOKRs(); 
   const [showModal, setShowModal] = useState(false);
 
   return (
@@ -18,7 +16,7 @@ export default function Home() {
       <nav className="flex flex-col my-4">
         <PageTitle>Lista de OKRs</PageTitle>
         <div className="flex justify-end">
-          <Button variant="primary" onClick={() => setShowModal(true)}>
+          <Button className="shadow-md" variant="primary"  onClick={() => setShowModal(true)}>
             <div className="flex gap-2">
               <AddIcon />
               <span>Criar Objetivo</span>
@@ -27,10 +25,10 @@ export default function Home() {
         </div>
       </nav>
       <main>
-        <MasonryObjectives okrs={okrs} />
+        <MasonryObjectives />
       </main>
       <Modal open={showModal} onClose={() => setShowModal(false)} title="Criar Novo Objetivo">
-        <CreateObjectiveForm />
+        <FormCreateObjective />
       </Modal>
     </>
   );

@@ -1,10 +1,7 @@
 import { HTMLAttributes, ReactNode } from 'react';
 import { tv } from 'tailwind-variants';
 import clsx from 'clsx';
-
-type ButtonVariant =
-  'primary' | 'secondary' | 'danger' | 'light' |
-  'outline-primary' | 'outline-secondary' | 'outline-danger' | 'outline-light';
+import { ButtonVariant } from '../types/ButtonVariant';
 
 interface ButtonProps extends HTMLAttributes<HTMLButtonElement> {
   children: ReactNode;
@@ -52,7 +49,7 @@ const button = tv({
       disabled: true,
       variant: 'light',
       class: 'hover:bg-gray-300',
-    },    
+    },
     {
       disabled: true,
       variant: 'outline-primary',

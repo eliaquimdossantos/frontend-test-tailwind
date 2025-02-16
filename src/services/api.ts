@@ -23,6 +23,19 @@ export async function getOkrs(): Promise<OKR[]> {
   }
 }
 
+// get - api/okrs
+export async function getOkr(okrId: string): Promise<OKR | null> {
+  try {
+    const response = await fetch(`${apiUrl}/okrs/${okrId}`);
+    if (!response.ok) throw new Error(`${response.status} - ${response.statusText}`);
+
+    return await response.json();
+  } catch (error) {
+    console.error('Não foi possível buscar os OKRs:', error);
+    return null;
+  }
+}
+
 // post - api/okrs
 export async function postOkrs(data: Partial<OKR>): Promise<OKR[] | null> {
   try {
@@ -49,7 +62,6 @@ export async function postOkrs(data: Partial<OKR>): Promise<OKR[] | null> {
 export async function getResultKeys(okrId: string): Promise<ResultKey[]> {
   try {
     const response = await fetch(`${apiUrl}/okrs/${okrId}/resultKeys`);
-    console.log(okrId);
     if (!response.ok) throw new Error(`${response.status} - ${response.statusText}`);
 
     return await response.json();
@@ -59,7 +71,7 @@ export async function getResultKeys(okrId: string): Promise<ResultKey[]> {
   }
 }
 
-// put /api/orks/:id
+// put /api/okrs/:id
 export async function putOkr(okrId: string, updatedData: Partial<OKR>) {
   try {
     const response = await fetch(`${apiUrl}/okrs/${okrId}`, {
@@ -75,10 +87,29 @@ export async function putOkr(okrId: string, updatedData: Partial<OKR>) {
     return await response.json();
   } catch (error) {
     console.error(error);
+    return null;
   }
 };
 
-// put /api/orks/:okrId/resultKeys/:keyResultId
+// post /api/okrs/:okrId/resultKeys
+export async function postResultKey(okrId: string, data: Partial<ResultKey>) {
+  try {
+    const response = await fetch(`${apiUrl}/okrs/${okrId}/resultKeys`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data),
+    });
+
+    if (!response.ok) throw new Error(response.statusText);
+
+    return await response.json();
+  } catch (error) {
+    console.error(error);
+    return null;
+  }
+};
+
+// put /api/okrs/:okrId/resultKeys/:keyResultId
 export async function putResultKey(okrId: string, keyResultId: string, updatedData: Partial<ResultKey>) {
   try {
     const response = await fetch(`${apiUrl}/okrs/${okrId}/resultKeys/${keyResultId}`, {
@@ -92,6 +123,20 @@ export async function putResultKey(okrId: string, keyResultId: string, updatedDa
     return await response.json();
   } catch (error) {
     console.error(error);
+    return null;
+  }
+};
+
+// get /api/okrs/:okrId/resultKeys/:keyResultId
+export async function getResultKey(okrId: string, keyResultId: string) {
+  try {
+    const response = await fetch(`${apiUrl}/okrs/${okrId}/resultKeys/${keyResultId}`);
+    if (!response.ok) throw new Error(`${response.status} - ${response.statusText}`);
+
+    return await response.json();
+  } catch (error) {
+    console.error(error);
+    return null;
   }
 };
 

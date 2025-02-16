@@ -1,11 +1,10 @@
 import Delivery from './Delivery';
 
-interface KeyResult {
-  createdAt: string;
+interface KeyResult {  
   name: string;
   deliveries: Delivery[];
   id: string;
-  orkId: string;
+  okrId: string;
 }
 
 export default KeyResult;
