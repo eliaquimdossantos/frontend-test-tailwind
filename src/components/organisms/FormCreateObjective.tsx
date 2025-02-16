@@ -6,6 +6,7 @@ import { z } from 'zod';
 import Form from '@/components/molecules/Form';
 import { useAlert } from '@/contexts/AlertContext';
 import { useOKRs } from '@/hooks/useOKRs';
+import { useState } from 'react';
 
 
 const createObjectiveSchema = z.object({
@@ -32,7 +33,10 @@ export default function FormCreateObjective() {
   const { addAlert } = useAlert();
   const { createOkr } = useOKRs();
 
+  const [waitingSubmit, setWaitingSubmit] = useState(false);
+
   const handleCreateObjective = async (data: CreateObjectiveSchema) => {
+    setWaitingSubmit(true);
     const success = await createOkr(data);
     if (success) {
       reset();
@@ -40,6 +44,7 @@ export default function FormCreateObjective() {
     } else {
       addAlert({ message: 'Erro ao criar resultado-chave', variant: 'error' });
     }
+    setWaitingSubmit(false);
   };
 
   return (
@@ -51,7 +56,7 @@ export default function FormCreateObjective() {
         error={errors.name?.message}
       />
 
-      <Form.Button variant="primary">Salvar</Form.Button>
+      <Form.Button disabled={waitingSubmit} variant="primary">Salvar</Form.Button>
     </Form>
   );
 }

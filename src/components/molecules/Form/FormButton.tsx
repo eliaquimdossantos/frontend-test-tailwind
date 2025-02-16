@@ -1,18 +1,19 @@
+import { ButtonHTMLAttributes, ReactNode } from 'react';
 import { twMerge } from 'tailwind-merge';
 import Button from '@/components/atoms/Button';
-import { HTMLAttributes, ReactNode } from 'react';
 import { ButtonVariant } from '@/types/ButtonVariant';
 
-interface FromButtonProps extends HTMLAttributes<HTMLButtonElement> {
+interface FormButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   children: ReactNode;
-  variant: ButtonVariant
+  variant: ButtonVariant;
 }
 
-export function FormButton({ children, variant, className, ...props }: FromButtonProps) {
+export function FormButton({ children, variant, disabled = false, className, ...props }: FormButtonProps) {
   return (
     <Button
       variant={variant}
       type="submit"
+      disabled={disabled}
       className={twMerge('w-100', className)}
       {...props}
     >
