@@ -2,6 +2,10 @@
 
 Este projeto foi desenvolvido como parte do processo seletivo para a posição de Pessoa Desenvolvedora Frontend na **TTZ**. O objetivo principal foi criar um painel para a **América Senior** gerenciar seus OKRs (Objectives and Key Results), conforme especificado no [repositório original](https://github.com/tootz-solucoes/frontend-test).  
 
+![Painel](/assets/painel.png)
+
+- As demais imagens demonstrativas se encontram no diretório `assets/`
+
 ## Objetivos Atendidos  
 
 - **Implementação do Frontend**: Desenvolvi o frontend do painel de gerenciamento de OKRs utilizando o framework **Next.js**.  
