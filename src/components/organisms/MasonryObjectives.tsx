@@ -18,7 +18,7 @@ export default function MasonryObjectives() {
   });
 
   if (loading) {
-    const skeletons = Array.from({ length: 4 }, (_, index) => (
+    const skeletons = Array.from({ length: 3 }, (_, index) => (
       <CardObjectiveSkeleton key={index} />
     ));
 

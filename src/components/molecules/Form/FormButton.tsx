@@ -1,7 +1,7 @@
 import { twMerge } from 'tailwind-merge';
 import Button from '@/components/atoms/Button';
 import { HTMLAttributes, ReactNode } from 'react';
-import { ButtonVariant } from '@/components/types/ButtonVariant';
+import { ButtonVariant } from '@/types/ButtonVariant';
 
 interface FromButtonProps extends HTMLAttributes<HTMLButtonElement> {
   children: ReactNode;
