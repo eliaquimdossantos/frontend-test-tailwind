@@ -1,7 +1,7 @@
-import { useOKRs } from '@/context/OKRContext';
-import { useAlert } from '@/context/AlertContext';
+import { useAlert } from '@/contexts/AlertContext';
 import UpsertKeyResult from '@/interfaces/UpserKeyResult';
 import { UseFormReset } from 'react-hook-form';
+import { useOKRs } from './useOKRs';
 
 export function useKeyResultActions() {
   const { createKeyResult, updateKeyResult } = useOKRs();

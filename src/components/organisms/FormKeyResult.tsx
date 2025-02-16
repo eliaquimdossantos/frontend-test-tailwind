@@ -10,6 +10,7 @@ import DeleteIcon from '@/components/atoms/DeleteIcon';
 import LinkButton from '@/components/atoms/LinkButton';
 import AddIcon from '@/components/atoms/AddIcon';
 import UpsertKeyResult from '@/interfaces/UpserKeyResult';
+import { useState } from 'react';
 
 const keyResultSchema = z.object({
   name: z.string().min(3, 'Você precisa informar um resultado-chave'),
@@ -54,10 +55,13 @@ export default function FormKeyResult({ onSubmit, initialData = propsInitialData
     name: 'deliveries',
   });
 
-  return (
-    <Form onSubmit={handleSubmit(async (data) => {
-      await onSubmit(data, reset);
+  const [waitingSubmit, setWaitingSubmit] = useState(false);
 
+  return (
+    <Form onSubmit={handleSubmit(async (data) => {      
+      setWaitingSubmit(true);
+      await onSubmit(data, reset);
+      setWaitingSubmit(false);
     })}>
       <div>
         <Form.Field
@@ -108,7 +112,7 @@ export default function FormKeyResult({ onSubmit, initialData = propsInitialData
         </LinkButton>
       </div>
 
-      <Form.Button variant="primary">Salvar</Form.Button>
+      <Form.Button disabled={waitingSubmit} variant="primary">Salvar</Form.Button>
     </Form>
   );
 }

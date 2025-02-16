@@ -1,34 +1,90 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Projeto de Gerenciamento de OKRs  
 
-## Getting Started
+Este projeto foi desenvolvido como parte do processo seletivo para a posição de Pessoa Desenvolvedora Frontend na **TTZ**. O objetivo principal foi criar um painel para a **América Senior** gerenciar seus OKRs (Objectives and Key Results), conforme especificado no [repositório original](https://github.com/tootz-solucoes/frontend-test).  
 
-First, run the development server:
+![Painel](/assets/painel.png)
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- As demais imagens demonstrativas se encontram no diretório `assets/`
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Objetivos Atendidos  
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- **Implementação do Frontend**: Desenvolvi o frontend do painel de gerenciamento de OKRs utilizando o framework **Next.js**.  
+- **Fidelidade ao Layout**: Segui o layout fornecido, com algumas melhorias de contraste, assegurando consistência tanto na versão desktop quanto mobile.  
+- **Uso de Tecnologias Modernas**: Utilizei **Tailwind CSS** para estilização dos componentes, garantindo um design modular e altamente personalizável, além de bibliotecas open source, como Zod, para manter a qualidade e o padrão do código.  
 
-## Learn More
+## Como Executar o Projeto  
 
-To learn more about Next.js, take a look at the following resources:
+Para rodar o projeto localmente, siga os passos abaixo:  
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### Pré-requisitos  
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- Node.js instalado na máquina.  
 
-## Deploy on Vercel
+### Passo a Passo  
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+1. **Clonar o Repositório**  
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+   ```bash
+   git clone git@github.com:eliaquimdossantos/frontend-test-tailwind.git
+   cd frontend-test-tailwind
+   ```  
+
+2. **Instalar as Dependências**  
+
+   ```bash
+   npm install
+   ```  
+
+3. **Adicionar Variáveis de Ambiente**  
+
+   Crie o arquivo `.env` na raiz do projeto e adicione a seguinte variável de ambiente:  
+   ```bash
+   NEXT_PUBLIC_API_URL=
+   ```  
+
+4. **Iniciar o Servidor de Desenvolvimento**  
+
+   ```bash
+   npm run dev
+   ```  
+
+   O aplicativo estará disponível em `http://localhost:3000`.  
+
+5. **Realizar Build do Projeto**  
+
+   Antes de rodar o projeto em produção, é necessário gerar uma versão otimizada:  
+   
+   ```bash
+   npm run build
+   ```  
+
+6. **Iniciar o Servidor em Produção**  
+
+   Com a build concluída, inicie o servidor:  
+   
+   ```bash
+   npm run start
+   ```  
+
+   O servidor estará rodando na porta definida ou, por padrão, em `http://localhost:3000`.  
+
+### Estrutura do Projeto  
+
+# Estrutura de Diretórios
+
+- **`src/app/`**: Componentes de página, como pages de layouts.  
+- **`src/components/`**: Componentes da interface de usuário no padrão Atomic Design.  
+- **`src/contexts/`**: Contexts para gerenciamento de estado global.  
+- **`src/hooks/`**: Hooks personalizados.  
+- **`src/interfaces/`**: Contratos de tipagem para componentes e dados complexos no TypeScript.  
+- **`src/services/`**: Funções de comunicação com a API.  
+- **`src/types/`**: Tipagens simples e utilitárias para TypeScript.  
+
+## Tecnologias Utilizadas  
+
+- **Next.js** – Framework React para aplicações web modernas  
+- **Tailwind CSS** – Biblioteca para estilização rápida e eficiente  
+- **React Hook Form + Zod** – Gerenciamento de formulários e validação  
+- **Atomic Design** – Arquitetura baseada em componentes reutilizáveis  
+
+Para mais detalhes sobre a estrutura e funcionalidades do Next.js, consulte a [documentação oficial](https://nextjs.org/docs).  

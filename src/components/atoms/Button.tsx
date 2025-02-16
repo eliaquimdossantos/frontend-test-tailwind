@@ -1,7 +1,7 @@
 import { HTMLAttributes, ReactNode } from 'react';
 import { tv } from 'tailwind-variants';
 import clsx from 'clsx';
-import { ButtonVariant } from '../types/ButtonVariant';
+import { ButtonVariant } from '@/types/ButtonVariant';
 
 interface ButtonProps extends HTMLAttributes<HTMLButtonElement> {
   children: ReactNode;

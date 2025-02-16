@@ -1,4 +1,4 @@
-import { useOKRs } from '@/context/OKRContext';
+import { useOKRs } from '@/hooks/useOKRs';
 import CardObjective from './CardObjective';
 import CardObjectiveSkeleton from './CardObjectiveSkeleton';
 
@@ -18,7 +18,7 @@ export default function MasonryObjectives() {
   });
 
   if (loading) {
-    const skeletons = Array.from({ length: 4 }, (_, index) => (
+    const skeletons = Array.from({ length: 3 }, (_, index) => (
       <CardObjectiveSkeleton key={index} />
     ));
 

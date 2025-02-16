@@ -9,8 +9,7 @@ export default function FormEditKeyResult({ okrId, keyResultId }: { okrId: strin
   const [initialData, setInitialData] = useState<UpsertKeyResult>();
 
   useEffect(() => {
-    async function loadData() {
-      // alert('carregou');
+    async function loadData() {      
       const data = await getResultKey(okrId, keyResultId);
       setInitialData(data);
     }
