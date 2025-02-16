@@ -1,4 +1,6 @@
-export interface Delivery {
+interface Delivery {
   name: string
   value: string
 }
+
+export default Delivery;

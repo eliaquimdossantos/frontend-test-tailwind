@@ -1,31 +1,22 @@
 'use client';
 
-import { useEffect, useState, useCallback } from 'react';
+import { useState } from 'react';
 import AddIcon from '@/components/atoms/AddIcon';
 import Button from '@/components/atoms/Button';
 import PageTitle from '@/components/molecules/PageTitle';
 import MasonryObjectives from '@/components/organisms/MasonryObjectives';
-import { OKR } from '@/interfaces/OKR';
-import { getOkrs } from '@/services/api';
+import Modal from '@/components/molecules/Modal';
+import FormCreateObjective from '@/components/organisms/FormCreateObjective';
 
 export default function Home() {
-  const [okrs, setOkrs] = useState<OKR[]>([]);
-
-  const fetchOkrs = useCallback(async () => {
-    const data = await getOkrs();
-    setOkrs(data);
-  }, []);
-
-  useEffect(() => {
-    fetchOkrs();
-  }, [fetchOkrs]);
+  const [showModal, setShowModal] = useState(false);
 
   return (
     <>
       <nav className="flex flex-col my-4">
         <PageTitle>Lista de OKRs</PageTitle>
         <div className="flex justify-end">
-          <Button variant="primary" onClick={() => { }}>
+          <Button className="shadow-md" variant="primary"  onClick={() => setShowModal(true)}>
             <div className="flex gap-2">
               <AddIcon />
               <span>Criar Objetivo</span>
@@ -34,8 +25,11 @@ export default function Home() {
         </div>
       </nav>
       <main>
-        <MasonryObjectives okrs={okrs} />
+        <MasonryObjectives />
       </main>
+      <Modal open={showModal} onClose={() => setShowModal(false)} title="Criar Novo Objetivo">
+        <FormCreateObjective />
+      </Modal>
     </>
   );
 }
