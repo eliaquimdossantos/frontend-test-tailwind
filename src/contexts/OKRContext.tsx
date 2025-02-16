@@ -87,16 +87,8 @@ export function OKRProvider({ children }: { children: ReactNode }) {
   );
 }
 
-export function useOKRs() {
+export function useOKRContext() {
   const context = useContext(OKRContext);
-  if (!context) throw new Error('useOKRs must be used within an OKRProvider');
+  if (!context) throw new Error('useOKRContext must be used within an OKRProvider');
   return context;
-}
-
-export function useKeyResults(okrId: string) {
-  const context = useContext(OKRContext);
-  if (!context) throw new Error('useKeyResults must be used within an OKRProvider');
-
-  const okr = context.okrs.find((okr) => okr.id === okrId);
-  return okr?.keyResults || [];
 }

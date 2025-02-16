@@ -1,4 +1,4 @@
-import { useOKRs } from '@/context/OKRContext';
+import { useOKRs } from '@/hooks/useOKRs';
 import CardObjective from './CardObjective';
 import CardObjectiveSkeleton from './CardObjectiveSkeleton';
 

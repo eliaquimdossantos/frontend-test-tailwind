@@ -5,9 +5,9 @@ import Title from '../atoms/Title';
 import AddIcon from '../atoms/AddIcon';
 import KeyResultItem from '../molecules/KeyResultItem';
 import LinkButton from '../atoms/LinkButton';
-import { useKeyResults } from '@/context/OKRContext';
 import Modal from '../molecules/Modal';
 import FormCreateKeyResult from './FormCreateKeyResult';
+import { useKeyResults } from '@/hooks/useKeyResults';
 interface CardObjectiveProps {
   name: string;
   okrId: string;

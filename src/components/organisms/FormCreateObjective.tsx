@@ -4,8 +4,8 @@ import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
 import Form from '@/components/molecules/Form';
-import { useOKRs } from '@/context/OKRContext';
-import { useAlert } from '@/context/AlertContext';
+import { useAlert } from '@/contexts/AlertContext';
+import { useOKRs } from '@/hooks/useOKRs';
 
 
 const createObjectiveSchema = z.object({
