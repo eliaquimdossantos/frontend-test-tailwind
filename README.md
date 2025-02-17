@@ -4,7 +4,7 @@ Este projeto foi desenvolvido como parte do processo seletivo para a posição d
 
 ![Painel](/assets/painel.png)
 
-- As demais imagens demonstrativas se encontram no diretório [assets/](assets)
+- As demais imagens demonstrativas se encontram no diretório [assets](assets/)
 
 ## Objetivos Atendidos  
 
@@ -16,7 +16,7 @@ Este projeto foi desenvolvido como parte do processo seletivo para a posição d
 
 Para rodar o projeto localmente, você tem duas opções:
 
-- Rodar usando o Docker (é necessário ter o Docker instalado na máquina): [DockerREADME.md](Manual de execução com Docker)
+- Rodar usando o Docker (é necessário ter o Docker instalado na máquina): [Manual de execução com Docker](DockerREADME.md)
 
 - Seguir o passo a passo abaixo (é necessário ter o Node.js instalado na máquina):
 
