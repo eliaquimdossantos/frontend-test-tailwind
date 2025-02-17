@@ -40,9 +40,9 @@ export default function FormCreateObjective() {
     const success = await createOkr(data);
     if (success) {
       reset();
-      addAlert({ message: 'Resultado-chave criado com sucesso', variant: 'success' });
+      addAlert({ message: 'Objetivo criado com sucesso', variant: 'success' });
     } else {
-      addAlert({ message: 'Erro ao criar resultado-chave', variant: 'error' });
+      addAlert({ message: 'Erro ao criar objetivo', variant: 'error' });
     }
     setWaitingSubmit(false);
   };
