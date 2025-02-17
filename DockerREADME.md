@@ -8,7 +8,7 @@ Na raiz do projeto e execute o seguinte comando para realizar o **build** da ima
 docker build -t okrs-panel --build-arg NEXT_PUBLIC_API_URL=https://api.example.com .
 ```
 
-- `-t OKRsPanel` → Define o nome da imagem como `OKRsPanel`.
+- `-t okrs-panel` → Define o nome da imagem como `okrs-panel`.
 - `--build-arg NEXT_PUBLIC_API_URL=https://api.example.com` → Define a variável de ambiente `NEXT_PUBLIC_API_URL`.
 
 ## 2. Executando o Container
@@ -46,5 +46,5 @@ docker rm CONTAINER_ID
 Para remover a imagem:
 
 ```sh
-docker rmi OKRsPanel
+docker rmi okrs-panel
 ```
